@@ -24,3 +24,10 @@
     --card-border-radius-4: 2rem;
     --card-border-radius-5: 5rem;
 }
+
+
+/* ============================     GENERAL CLASSES     ============================= */
+*{
+    margin: 0;
+    
+}
