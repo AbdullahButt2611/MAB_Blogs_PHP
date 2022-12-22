@@ -37,7 +37,7 @@ Following are some of the new features and learning encountered while creating t
 <br>
 Follwing resources have been used in maintaining this project:
 
-- Write points here
+- [Iconscout Library](https://iconscout.com/unicons/getting-started/line) has been used to import icons for different purposes.
 
 
 <br><br>
