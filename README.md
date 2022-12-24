@@ -38,6 +38,7 @@ Following are some of the new features and learning encountered while creating t
 Follwing resources have been used in maintaining this project:
 
 - [Iconscout Library](https://iconscout.com/unicons/getting-started/line) has been used to import icons for different purposes.
+- [Google Fonts](https://fonts.google.com/specimen/Montserrat?query=mont) has been used to import the <strong>Monteserrat</strong> font.
 
 
 <br><br>
