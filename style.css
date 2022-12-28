@@ -305,3 +305,61 @@ footer{
     background: var(--color-white);
     color: var(--color-bg);
 }
+
+.footer__container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+footer h4{
+    color: var(--color-white);
+    margin-bottom: 0.6rem;
+}
+
+footer ul li{
+    padding: 0.4rem 0;
+}
+
+footer ul a{
+    opacity: 0.75;
+}
+
+footer ul a:hover{
+    letter-spacing: 0.2rem;
+    opacity: 1;
+}
+
+.footer__copyright{
+    text-align: center;
+    padding: 1.5rem 0;
+    border: 2px solid var(--color-bg);
+    margin-top: 4rem;
+}
+
+
+
+
+/* ============================      MEDIA QUERY (MEDIUM DEVICES)     ============================= */
+@media screen and (max-width: 1024px) {
+    /* =====      General sTyles     ===== */
+
+    .container{
+        width: var(--container-width-md);
+    }
+
+    h2{
+        font-size: 1.6rem;
+    }
+
+    h3{
+        font-size: 1.2rem;
+    }
+
+    h5{
+        font-size: 0.8rem;
+    }
+
+    /* =====      NAV     ===== */
+    
+
+}
