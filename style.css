@@ -484,12 +484,19 @@ input, textarea, select{
     border-radius: var(--card-border-radius-2);
     resize: none;
     color: var(--color-white);
+    font-family: 'Montserrat', sans-serif;
 }
 
 
 
 .form__section small{
+    margin-top: 1rem;
+    display: block;
+}
 
+
+.form__section small a{
+    color: var(--color-primary);
 }
 
 
@@ -632,8 +639,10 @@ input, textarea, select{
 
 
 
-    /* ======      SINGLE POST     ======= */
-    
+    /* ======     GENERAL FORM     ======= */
+    .form__section-container{
+        padding: 3rem;
+    }
 
 }
 
@@ -688,6 +697,13 @@ input, textarea, select{
     /* ======      SINGLE POST     ======= */
     .singlepost__container{
         background: transparent;
+        padding: 0;
+    }
+
+
+
+    /* ======     GENERAL FORM     ======= */
+    .form__section-container{
         padding: 0;
     }
 }
