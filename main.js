@@ -1,6 +1,9 @@
 const navItems = document.querySelector('.nav__items');
 const openNavBtn = document.querySelector('#open__nav-btn');
 const closeNavBtn = document.querySelector('#close__nav-btn');
+const sidebar = document.querySelector("aside");
+const showSidebarBtn = document.querySelector("#show__sidebar-btn");
+const hideSidebarBtn = document.querySelector("#hide__sidebar-btn");
 
 
 

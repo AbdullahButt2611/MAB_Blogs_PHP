@@ -18,6 +18,7 @@
     <link rel="shortcut icon" href="images/fav.png" type="image/x-icon">
 
 </head>
+
 <body>
 
 
@@ -55,6 +56,8 @@
 
     <section class="dashboard">
         <div class="container dashboard__container">
+            <button id="show__Sidebar-btn" class="sidebar__toggle"><i class="uil uil-angle-right-b"></i></button>
+            <button id="hide__Sidebar-btn" class="sidebar__toggle"><i class="uil uil-angle-left-b"></i></button>
 
             <aside>
                 <ul>
@@ -95,7 +98,7 @@
                     </li>
 
                     <li>
-                        <a href="manage-categories.html">
+                        <a href="manage-categories.html" class="active">
                             <i class="uil uil-list-ul"></i>
                             <h5>Manage Categories</h5>
                         </a>
@@ -106,7 +109,37 @@
             <!----------------------- ASIDE MENU ENDS HERE ------------------------->
             
             <main>
-    
+                <h2>Manage Categories</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Travel</td>
+                            <td><a href="edit-category.html" class="btn sm">Edit</a></td>
+                            <td><a href="delete-category.html" class="btn sm danger">Delete</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>Wild Life</td>
+                            <td><a href="edit-category.html" class="btn sm">Edit</a></td>
+                            <td><a href="delete-category.html" class="btn danger sm">Delete</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>Music</td>
+                            <td><a href="edit-category.html" class="btn sm">Edit</a></td>
+                            <td><a href="delete-category.html" class="btn danger sm">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </main>
 
         </div>
