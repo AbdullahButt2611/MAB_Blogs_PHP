@@ -93,6 +93,22 @@ Follwing technologies have been used at the core of this application to make it 
 <!-- ................................................................................................................................. -->
 
 
+
+
+### IDE
+<br>
+Visual Studiio Code is used in coding. Following extension ar downlaoded while working this project
+
+- PHP Intelephense
+- Bracket Pair Colorization
+- PHP Server
+- Liver Server
+
+
+<br><br>
+<!-- ................................................................................................................................. -->
+
+
 ### Advancement
 
 > Text here
