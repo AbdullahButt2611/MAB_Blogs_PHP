@@ -26,7 +26,7 @@
 <br>
 Following are some of the new features and learning encountered while creating this amazing project:
 
-- Write points here
+- To make the code reusable by making partials of the code and then simply requiring it in multiple files where required.
 
 
 <br><br>
