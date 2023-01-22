@@ -226,7 +226,7 @@ include 'partials/header.php';
 
             <div class="post__info">
 
-                <a href="category-posts.html" class="category__button">Travel</a>
+                <a href="category-posts.php" class="category__button">Travel</a>
 
                 <h3 class="post__title">
                     <a href="post.html">PIONEERING NODULE MINING: SOME WORDS ON GSR AND ON WHAT WE ARE DOING</a>

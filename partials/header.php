@@ -12,7 +12,7 @@ require 'config/constants.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAB Blogs</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="<?=  ROOT_URL ?>css/style.css">
 
     <!-- CDN FOR ICONSCOUT FOR INSERTIG ICONS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -24,7 +24,7 @@ require 'config/constants.php';
 <body>
     <nav>
         <div class="container nav__container">
-            <a href="index.php" class="nav__logo">MAB BLOGS</a>
+            <a href="<?=  ROOT_URL ?>" class="nav__logo">MAB BLOGS</a>
 
             <ul class="nav__items">
                 <li><a href="<?=  ROOT_URL ?>blog.php">Blog</a></li>
@@ -38,7 +38,7 @@ require 'config/constants.php';
                     </div>
 
                     <ul>
-                        <li><a href="<?=  ROOT_URL ?>admin/dashboard.php">Dashboard</a></li>
+                        <li><a href="<?=  ROOT_URL ?>admin/index.php">Dashboard</a></li>
                         <li><a href="<?=  ROOT_URL ?>logout.php">Log Out</a></li>
                     </ul>
                 </li>

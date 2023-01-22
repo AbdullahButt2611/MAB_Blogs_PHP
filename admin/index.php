@@ -5,6 +5,7 @@ include "partials/header.php";
 ?>
 
 
+    
 
 <section class="dashboard">
     <div class="container dashboard__container">
@@ -22,7 +23,7 @@ include "partials/header.php";
                 </li>
 
                 <li>
-                    <a href="dashboard.html">
+                    <a href="dashboard.html" class="active">
                         <i class="uil uil-postcard"></i>
                         <h5>Manage Post</h5>
                     </a>
@@ -36,7 +37,7 @@ include "partials/header.php";
                 </li>
 
                 <li>
-                    <a href="manage-users.html"  class="active">
+                    <a href="manage-users.html">
                         <i class="uil uil-users-alt"></i>
                         <h5>Manage Users</h5>
                     </a>
@@ -61,42 +62,38 @@ include "partials/header.php";
         <!----------------------- ASIDE MENU ENDS HERE ------------------------->
         
         <main>
-            <h2>Manage Users</h2>
+            <h2>Manage Posts</h2>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Username</th>
+                        <th>Title</th>
+                        <th>Category</th>
                         <th>Edit</th>
                         <th>Delete</th>
-                        <th>Admin</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr>
-                        <td>Abdullah Butt</td>
-                        <td>Mr Nobody</td>
-                        <td><a href="edit-user.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.html" class="btn sm danger">Delete</a></td>
-                        <td>Yes</td>
+                        <td>Responsive Blog App/Website with Admin Panel</td>
+                        <td>Travel</td>
+                        <td><a href="edit-post.html" class="btn sm">Edit</a></td>
+                        <td><a href="delete-post.html" class="btn sm danger">Delete</a></td>
                     </tr>
 
                     <tr>
-                        <td>Abdullah Yaqub</td>
-                        <td>CR Bhai</td>
-                        <td><a href="edit-user.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.html" class="btn sm danger">Delete</a></td>
-                        <td>No</td>
+                        <td>NUMBERS OF THE VOYAGE – A LITTLE RIDDLE (PART 2)</td>
+                        <td>Robotics</td>
+                        <td><a href="edit-post.html" class="btn sm">Edit</a></td>
+                        <td><a href="delete-post.html" class="btn sm danger">Delete</a></td>
                     </tr>
 
                     <tr>
-                        <td>Ayesha Ashfaq</td>
-                        <td>AyeshaTae</td>
-                        <td><a href="edit-user.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.html" class="btn sm danger">Delete</a></td>
-                        <td>Yes</td>
+                        <td>DIVE NO. 379</td>
+                        <td>Party</td>
+                        <td><a href="edit-category.html" class="btn sm">Edit</a></td>
+                        <td><a href="delete-category.html" class="btn sm danger">Delete</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -105,6 +102,10 @@ include "partials/header.php";
     </div>
 </section>
 <!----------------------- Dashboard SECTION ENDS HERE ------------------------->
+
+
+
+
 
 
 <?php
