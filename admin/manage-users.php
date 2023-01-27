@@ -15,42 +15,42 @@ include "partials/header.php";
             <ul>
                 
                 <li>
-                    <a href="add-post.html">
+                    <a href="add-post.php">
                         <i class="uil uil-pen"></i>
                         <h5>Add Post</h5>
                     </a>
                 </li>
 
                 <li>
-                    <a href="dashboard.html">
+                    <a href="index.php">
                         <i class="uil uil-postcard"></i>
                         <h5>Manage Post</h5>
                     </a>
                 </li>
 
                 <li>
-                    <a href="add-user.html">
+                    <a href="add-user.php">
                         <i class="uil uil-user-plus"></i>
                         <h5>Add User</h5>
                     </a>
                 </li>
 
                 <li>
-                    <a href="manage-users.html"  class="active">
+                    <a href="manage-users.php"  class="active">
                         <i class="uil uil-users-alt"></i>
                         <h5>Manage Users</h5>
                     </a>
                 </li>
 
                 <li>
-                    <a href="add-category.html">
+                    <a href="add-category.php">
                         <i class="uil uil-edit"></i>
                         <h5>Add Category</h5>
                     </a>
                 </li>
 
                 <li>
-                    <a href="manage-categories.html">
+                    <a href="manage-categories.php">
                         <i class="uil uil-list-ul"></i>
                         <h5>Manage Categories</h5>
                     </a>
@@ -78,24 +78,24 @@ include "partials/header.php";
                     <tr>
                         <td>Abdullah Butt</td>
                         <td>Mr Nobody</td>
-                        <td><a href="edit-user.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.html" class="btn sm danger">Delete</a></td>
+                        <td><a href="edit-user.php" class="btn sm">Edit</a></td>
+                        <td><a href="delete-user.php" class="btn sm danger">Delete</a></td>
                         <td>Yes</td>
                     </tr>
 
                     <tr>
                         <td>Abdullah Yaqub</td>
                         <td>CR Bhai</td>
-                        <td><a href="edit-user.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.html" class="btn sm danger">Delete</a></td>
+                        <td><a href="edit-user.php" class="btn sm">Edit</a></td>
+                        <td><a href="delete-user.php" class="btn sm danger">Delete</a></td>
                         <td>No</td>
                     </tr>
 
                     <tr>
                         <td>Ayesha Ashfaq</td>
                         <td>AyeshaTae</td>
-                        <td><a href="edit-user.html" class="btn sm">Edit</a></td>
-                        <td><a href="delete-user.html" class="btn sm danger">Delete</a></td>
+                        <td><a href="edit-user.php" class="btn sm">Edit</a></td>
+                        <td><a href="delete-user.php" class="btn sm danger">Delete</a></td>
                         <td>Yes</td>
                     </tr>
                 </tbody>

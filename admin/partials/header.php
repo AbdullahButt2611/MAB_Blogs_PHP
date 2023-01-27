@@ -1,16 +1,10 @@
 <?php
 
-require '../config/database.php';
+require 'config/database.php';
+
 
 ?>
 
-
-
-<?php
-
-require 'config/constants.php';
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">

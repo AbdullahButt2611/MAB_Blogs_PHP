@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAB Blogs</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- CDN FOR ICONSCOUT FOR INSERTIG ICONS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -29,7 +29,7 @@
                 <input type="text" placeholder="Username or Email">
                 <input type="password" placeholder="Password">
                 <button type="submit" class="btn">Sign In</button>
-                <small>Don't have an account? <a href="signup.html">Register Yourself</a></small>
+                <small>Don't have an account? <a href="signup.php">Register Yourself</a></small>
             </form>
         </div>
     </section>
@@ -38,7 +38,7 @@
 
 
     <!----------------------- LINKING JAVASCRIPT ------------------------->
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 
 
 </body>
