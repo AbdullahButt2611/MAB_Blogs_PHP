@@ -27,6 +27,8 @@
 Following are some of the new features and learning encountered while creating this amazing project:
 
 - To make the code reusable by making partials of the code and then simply requiring it in multiple files where required.
+- Holding back the users from accessing the action modified pages through filtering the requests and bouncing back the failed requests to the original page of transmission.
+- Using forms in PHP
 
 
 <br><br>
