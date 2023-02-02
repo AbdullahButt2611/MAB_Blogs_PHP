@@ -16,6 +16,7 @@
 <p align="justify">
 Users will be able to read blogs, search blogs, sort blogs by categories, and more! Users can also signup to become authors, where they can (add/edit/delete) their posts. An Admin can do all an author can do, and more. An admin will be able to (add/edit/delete) users (admin/author), manage (add/edit/delete) categories. <br>
 The user first gotta do the registration into our system before using our system. While registring some fields will be given to the user to fill the data related to user. The user have to fill all the details and all th validations have been applied on the data so that the user won't be able to add the repetitive credentials all at the same time. Even if the password enetered by the user to confirm does not match then the system will keep displaying the error message to the user. For profile picture it is necessary to keep some things in mind and that is the size of the image must be less than <b>1 MB</b> and the allowed files that could be upoaded are <b>png, jpg, jpeg</b>. Once the user has successfully uploaded the data into the system's database then the user will be redirected to the login screen with some point to alert the user about the registration.<br>
+Then the user can simply enter the credentails into the login page then based on their status, the user will be redirected to the dashbaord. If the user is an <b>Admin</b> then it will be redirected to dashboard with some more functionalities and if the user is <b>Simple User</b> then the user will be redirected to the simple dashboard. Also the checks on the input field have bee apllied. Some unauthenticated or unauthorized users won't be alllowed to enter into the system. 
 
 </p>
 
@@ -33,6 +34,9 @@ Following are some of the new features and learning encountered while creating t
 - Using forms in PHP
 - Using form validation for mitigating the erroneous data.
 - Data Encryption and hashing to store credentials in the database
+- Securing the system by applying checks at multiple points
+- Authorization by applying different roles into the systems
+- Interactive Dashboard to perform different functionalities
 
 
 <br><br>
