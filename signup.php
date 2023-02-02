@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-require "config/database.php";
+require "config/constants.php";
 
 // GETTING BACK FORM DATA IF THERE WAS A REGISTRATION ERROR
 $firstname = $_SESSION['signup-data']['firstname'] ?? null;

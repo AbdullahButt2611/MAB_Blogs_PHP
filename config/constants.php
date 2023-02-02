@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 define('ROOT_URL', 'http://localhost/MAB_Blogs_PHP/');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'mrnobody');

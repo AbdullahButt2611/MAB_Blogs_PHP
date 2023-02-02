@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require "config/database.php";
 
 
@@ -90,7 +89,7 @@ if(isset($_POST['submit'])){
     }
 
     // REDIRECTING BACK TO SIGN UP PAGE IF THERE WAS ANY PROBLEM
-    if($_SESSION['signup'])
+    if(isset($_SESSION['signup']))
     {
 
         // PASSING THE FORM DATA BACK TO SIGN UP PAGE
