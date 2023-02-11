@@ -26,7 +26,7 @@ if(isset($_SESSION['user-id'])){
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
     <!-- LINK FOR THE FAV ICON -->
-    <link rel="shortcut icon" href="images/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?=ROOT_URL?>images/fav.png" type="image/x-icon">
 
 </head>
 <body>

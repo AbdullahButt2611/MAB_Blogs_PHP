@@ -13,17 +13,33 @@ $users = mysqli_query($connection, $query);
 
 
 <section class="dashboard">
-    <?php if(isset($_SESSION['add-user-success'])) : ?>
     
-        <script>
-            alert("Done");
-        </script>
+    <!-- ========       CODE TO SHOW THE MESSAGES       ========== -->
+    <?php if(isset($_SESSION['add-user-success'])) :  // SHOWS IF ADD USER OPERATION WAS ACTIVATED ?>
     
         <div class="alert__message success container">
-            <p><?= 
+            <b><p class="text-center"><?= 
                 $_SESSION['add-user-success'];
                 unset($_SESSION['add-user-success']);
-            ?></p>
+            ?></p></b>
+        </div>
+    
+    <?php elseif(isset($_SESSION['edit-user-success'])) :  // SHOWS IF EDIT USER OPERATION WAS ACTIVATED ?>
+    
+        <div class="alert__message success container ">
+            <b><p class="text-center"><?= 
+                $_SESSION['edit-user-success'];
+                unset($_SESSION['edit-user-success']);
+            ?></p></b>
+        </div>
+
+    <?php elseif(isset($_SESSION['edit-user'])) :  // SHOWS IF EDIT USER OPERATION WAS ACTIVATED BUT FAILED ?>
+    
+        <div class="alert__message error container ">
+            <b><p class="text-center"><?= 
+                $_SESSION['edit-user'];
+                unset($_SESSION['edit-user']);
+            ?></p></b>
         </div>
     
     <?php endif ?>
