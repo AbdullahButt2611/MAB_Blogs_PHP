@@ -2,6 +2,13 @@
 
 include "partials/header.php";
 
+// GETTING BACK THE FORM DATA IF INVALID
+$title = $_SESSION['add-category-data']['title'] ?? null;
+$description = $_SESSION['add-category-data']['description'] ?? null;
+
+
+unset($_SESSION['add-category-data']);
+
 ?>
 
 
@@ -12,14 +19,24 @@ include "partials/header.php";
     <div class="container form__section-container">
         <h2>Add Category</h2>
 
-        <div class="alert__message error">
-            <p>This is a error message</p>
-        </div>
+        <?php if(isset($_SESSION['add-category'])) :?>
 
-        <form action="">
-            <input type="text" placeholder="Title">
-            <textarea rows="4" placeholder="Description"></textarea>
-            <button type="submit" class="btn">Add Category</button>
+            <div class="alert__message error">
+                <p>
+                    <?= 
+                        $_SESSION['add-category']; 
+                        unset($_SESSION['add-category']);
+                    ?>
+                </p>
+                
+            </div>
+
+        <?php endif ?>
+
+        <form action="<?=  ROOT_URL ?>admin/add-category-logic.php" method="POST">
+            <input type="text" value="<?= $title ?>" name="title" placeholder="Title">
+            <textarea rows="4" value="<?= $description ?>" name="description" placeholder="Description"></textarea>
+            <button type="submit" name="submit" class="btn">Add Category</button>
         </form>
     </div>
 </section>

@@ -2,6 +2,11 @@
 
 include "partials/header.php";
 
+
+// FETCHING CATEGORIES FROM DATABASE
+$query = "SELECT * FROM categories ORDER BY title";
+$categories = mysqli_query($connection, $query);
+
 ?>
 
 
@@ -68,6 +73,8 @@ include "partials/header.php";
         <main>
             <h2>Manage Categories</h2>
 
+            <?php if(mysqli_num_rows($categories) > 0) : ?>
+
             <table>
                 <thead>
                     <tr>
@@ -83,20 +90,13 @@ include "partials/header.php";
                         <td><a href="edit-category.php" class="btn sm">Edit</a></td>
                         <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
                     </tr>
-
-                    <tr>
-                        <td>Wild Life</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn danger sm">Delete</a></td>
-                    </tr>
-
-                    <tr>
-                        <td>Music</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn danger sm">Delete</a></td>
-                    </tr>
                 </tbody>
             </table>
+            <?php else : ?>
+                <div class="alert__message error  ">
+                    <b><p class="text-center">No Categories Found</p></b>
+                </div>
+            <?php endif ?>
         </main>
 
     </div>

@@ -41,6 +41,24 @@ $users = mysqli_query($connection, $query);
                 unset($_SESSION['edit-user']);
             ?></p></b>
         </div>
+
+    <?php elseif(isset($_SESSION['delete-user-success'])) :  // SHOWS IF DELETE USER OPERATION WAS ACTIVATED BUT FAILED ?>
+    
+        <div class="alert__message success container ">
+            <b><p class="text-center"><?= 
+                $_SESSION['delete-user-success'];
+                unset($_SESSION['delete-user-success']);
+            ?></p></b>
+        </div>
+
+    <?php elseif(isset($_SESSION['delete-user'])) :  // SHOWS IF DELETE USER OPERATION WAS ACTIVATED BUT FAILED ?>
+    
+        <div class="alert__message error container ">
+            <b><p class="text-center"><?= 
+                $_SESSION['delete-user'];
+                unset($_SESSION['delete-user']);
+            ?></p></b>
+        </div>
     
     <?php endif ?>
 
@@ -105,6 +123,8 @@ $users = mysqli_query($connection, $query);
         <main>
             <h2>Manage Users</h2>
 
+            <?php if(mysqli_num_rows($users) > 0) : ?>
+
             <table>
                 <thead>
                     <tr>
@@ -130,6 +150,13 @@ $users = mysqli_query($connection, $query);
                     <?php endwhile ?>
                 </tbody>
             </table>
+            <?php else : ?>
+
+                <div class="alert__message error  ">
+                    <b><p class="text-center">No Users Found</p></b>
+                </div>
+
+            <?php endif ?>
         </main>
 
     </div>
