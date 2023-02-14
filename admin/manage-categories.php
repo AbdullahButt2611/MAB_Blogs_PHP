@@ -4,7 +4,7 @@ include "partials/header.php";
 
 
 // FETCHING CATEGORIES FROM DATABASE
-$query = "SELECT * FROM categories ORDER BY title";
+$query = "SELECT * FROM categories WHERE title<>'Uncategorized (Default)'  ORDER BY title" ;
 $categories = mysqli_query($connection, $query);
 
 ?>
@@ -13,6 +13,58 @@ $categories = mysqli_query($connection, $query);
     
 
 <section class="dashboard">
+
+    <!-- ========       CODE TO SHOW THE MESSAGES       ========== -->
+    <?php if(isset($_SESSION['add-category-success'])) :  // SHOWS IF ADD CATEGORY OPERATION WAS ACTIVATED ?>
+        
+        <div class="alert__message success container">
+            <b><p class="text-center"><?= 
+                $_SESSION['add-category-success'];
+                unset($_SESSION['add-category-success']);
+            ?></p></b>
+        </div>
+
+    <?php elseif(isset($_SESSION['add-category'])) :  // SHOWS IF ADD CATEGORY OPERATION WAS NOT ACTIVATED ?>
+        
+        <div class="alert__message error container">
+            <b><p class="text-center"><?= 
+                $_SESSION['add-category'];
+                unset($_SESSION['add-category']);
+            ?></p></b>
+        </div>
+
+    <?php elseif(isset($_SESSION['edit-category-success'])) :  // SHOWS IF EDIT CATEGORY OPERATION WAS ACTIVATED ?>
+        
+        <div class="alert__message success container">
+            <b><p class="text-center"><?= 
+                $_SESSION['edit-category-success'];
+                unset($_SESSION['edit-category-success']);
+            ?></p></b>
+        </div>
+
+    <?php elseif(isset($_SESSION['edit-category'])) :  // SHOWS IF EDIT CATEGORY OPERATION WAS NOT ACTIVATED ?>
+        
+        <div class="alert__message error container">
+            <b><p class="text-center"><?= 
+                $_SESSION['edit-category'];
+                unset($_SESSION['edit-category']);
+            ?></p></b>
+        </div>
+    
+        
+    <?php elseif(isset($_SESSION['delete-category-success'])) :  // SHOWS IF EDIT CATEGORY OPERATION WAS ACTIVATED ?>
+        
+        <div class="alert__message success container">
+            <b><p class="text-center"><?= 
+                $_SESSION['delete-category-success'];
+                unset($_SESSION['delete-category-success']);
+            ?></p></b>
+        </div>
+    
+    <?php endif?>
+
+
+
     <div class="container dashboard__container">
         <button id="show__Sidebar-btn" class="sidebar__toggle"><i class="uil uil-angle-right-b"></i></button>
         <button id="hide__Sidebar-btn" class="sidebar__toggle"><i class="uil uil-angle-left-b"></i></button>
@@ -85,11 +137,13 @@ $categories = mysqli_query($connection, $query);
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Travel</td>
-                        <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-                        <td><a href="delete-category.php" class="btn sm danger">Delete</a></td>
-                    </tr>
+                    <?php while($category = mysqli_fetch_assoc($categories)) : ?>
+                        <tr>
+                            <td><?=$category['title']?></td>
+                            <td><a href="<?= ROOT_URL ?>admin/edit-category.php?id=<?=$category['id']?>" class="btn sm">Edit</a></td>
+                            <td><a href="<?= ROOT_URL ?>admin/delete-category.php?id=<?=$category['id']?>" class="btn sm danger">Delete</a></td>
+                        </tr>
+                    <?php endwhile ?>
                 </tbody>
             </table>
             <?php else : ?>
