@@ -105,6 +105,16 @@ img{
     text-align: center;
 }
 
+.flex-space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-space-between > input{
+    width: 36%;
+}
+
 
 
 
@@ -799,6 +809,16 @@ input, textarea, select{
 
     h1{
         font-size: 2rem;
+    }
+
+    .flex-space-between{
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    .flex-space-between > input{
+        width: 100%;
     }
 
     .featured{

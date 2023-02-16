@@ -25,13 +25,13 @@ if(isset($_POST['submit'])){
 
 
     // VALIDATING FORM DATA
-    if(!$body)
-    {
-        $_SESSION['add-post'] = "Content is Required For The Post";
-    }
-    elseif(!$title)
+    if(!$title)
     {
         $_SESSION['add-post'] = "Title is Required For The Post";
+    }
+    elseif(!$body)
+    {
+        $_SESSION['add-post'] = "Content is Required For The Post";
     }
     elseif(!$category_id)
     {

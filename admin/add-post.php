@@ -9,6 +9,13 @@ $query = "SELECT * FROM categories";
 $result = mysqli_query($connection, $query);
 
 
+// GETTING BACK FORM DATA IF ANYTHING IS INVALID
+$title = $_SESSION['add-post-data']['title'] ?? null;
+$body = $_SESSION['add-post-data']['body'] ?? null;
+
+unset($_SESSION['add-post-data']);
+
+
 
 ?>
 
@@ -20,13 +27,24 @@ $result = mysqli_query($connection, $query);
     <div class="container form__section-container">
         <h2>Add Post</h2>
 
-        <b><div class="alert__message error">
-            <p class="text-center">This is a error message</p>
-        </div></b>
+        <?php if(isset($_SESSION['add-post'])) : ?>
+
+            <b><div class="alert__message error">
+                <p class="text-center">
+                    <?=
+                    
+                    $_SESSION['add-post'];
+                    unset($_SESSION['add-post']);
+                    
+                    ?>
+                </p>
+            </div></b>
+        
+            <?php endif ?>
 
         <form action="<?= ROOT_URL?>admin/add-post-logic.php" enctype="multipart/form-data" method="POST">
             
-            <input type="text" name="title" placeholder="Title">
+            <input type="text" value="<?= $title ?>" name="title" placeholder="Title">
             
             <select name="category">
                 <?php while($category = mysqli_fetch_assoc($result)) : ?>
@@ -34,7 +52,7 @@ $result = mysqli_query($connection, $query);
                 <?php endwhile ?>
             </select>
             
-            <textarea name="body" rows="10" placeholder="Body"></textarea>
+            <textarea name="body" rows="10"  placeholder="Body"><?= $body ?></textarea>
 
             <?php if(isset($_SESSION['user_is_admin'])) : ?>
             
