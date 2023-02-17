@@ -2,272 +2,172 @@
 
 include 'partials/header.php';
 
+
+// FECTHING FEATURED POST FROM DATABASE
+$featured_query = "SELECT * FROM posts WHERE is_featured = 1";
+$featured_result = mysqli_query($connection, $featured_query);
+$featured = mysqli_fetch_assoc($featured_result);
+
+
+// FETCHING 9 POST FROM POSTS TABLE IN THE DATABASE
+$query = "SELECT * FROM posts WHERE is_featured<>1 ORDER BY date_time DESC LIMIT 9";
+$posts = mysqli_query($connection, $query);
+
 ?>
 
 
-<section class="featured">
+<!-- SHOWING FEATURED POST IF ANY HERE -->
+<?php if(mysqli_num_rows($featured_result) == 1) : ?>
 
-    <div class="container featured__container">
-        <div class="post__thumbnail">
-            <img src="images/blog1.jpg">
-        </div>
+    <section class="featured">
 
-        <div class="post__info">
-            <a href="category-posts.html" class="category__button">Wild Life</a>
-
-            <h2 class="post__title"><a href="post.html">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium!</a></h2>
-
-            <p class="post__body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia accusamus cum deleniti officiis natus reprehenderit beatae. At magni excepturi possimus ut consectetur nobis explicabo ipsa debitis deserunt praesentium. Saepe, odio!
-            </p>
-
-            <div class="post__author">
-                <div class="post__author-avatar">
-                    <img src="images/avatar2.jpg" alt="">
-                </div>
-
-                <div class="post__author-info">
-                    <h5>By: Abdullah Yaqub</h5>
-                    <small>Dec 25, 2022 - 09:10</small>
-                </div>
+        <div class="container featured__container">
+            <div class="post__thumbnail">
+                <img src="./images/<?= $featured['thumbnail'] ?>">
             </div>
 
-        </div>
-    </div>
+            <?php
+            
+                // FECTHING CATEGORY FROM CATEGORIES TABLE USING CATEGORY ID OF POST
+                $category_id = $featured['category_id'];
+                $category_query = "SELECT * FROM categories WHERE id=$category_id";
+                $category_result = mysqli_query($connection, $category_query);
+                $category = mysqli_fetch_assoc($category_result);
+                $category_title = $category['title'];
+            
+            ?>
 
-</section>
+            <div class="post__info">
+                <a href="<?= ROOT_URL?>category-posts.php?id=<?= $category['id'] ?>" class="category__button"><?= $category_title ?></a>
+
+                <h2 class="post__title"><a href="<?= ROOT_URL?>post.php?id=<?= $featured['id'] ?>"><?= $featured['title'] ?></a></h2>
+
+                <p class="post__body">
+                    <?= substr($featured['body'], 0, 300) . "..."; ?>
+                </p>
+
+                <div class="post__author">
+
+                    <?php
+                    
+                        // FETCHING AUTHOR FROM USER TABLE USING USER ID
+                        $user_id = $featured['author_id'];
+                        $user_query = "SELECT * FROM users WHERE id=$user_id";
+                        $user_result = mysqli_query($connection, $user_query);
+                        $user = mysqli_fetch_assoc($user_result);
+                    
+                    ?>
+
+                    <div class="post__author-avatar">
+                        <img src="./images/<?= $user['avatar'] ?>" alt="">
+                    </div>
+
+                    <div class="post__author-info">
+                        <h5>By: &nbsp;<?= $user['firstname']. " " . $user['lastname']?></h5>
+                        <small><?= date("F j, Y, g:i a", strtotime($featured['date_time'])); ?></small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+<?php endif ?>
+
 <!----------------------- Featured SECTION ENDS HERE ------------------------->
+
+
+
 
 
 
 <section class="posts">
     <div class="container posts__container">
 
-        <article class="post">
+        <?php while($post = mysqli_fetch_assoc($posts)) : ?>
 
-            <div class="post__thumbnail">
-                <img src="images/blog2.jpg">
-            </div>
+            <article class="post">
 
-            <div class="post__info">
+                <div class="post__thumbnail">
+                    <img src="./images/<?= $post['thumbnail']?>">
+                </div>
+
+                <div class="post__info">
+
+                    <?php
                 
-                <a href="category-posts.html" class="category__button">Robotics</a>
+                        // FECTHING CATEGORY FROM CATEGORIES TABLE USING CATEGORY ID OF POST
+                        $simplecategory_id = $post['category_id'];
+                        $simplecategory_query = "SELECT * FROM categories WHERE id=$simplecategory_id";
+                        $simplecategory_result = mysqli_query($connection, $simplecategory_query);
+                        $simplecategory = mysqli_fetch_assoc($simplecategory_result);
+                    
+                    ?>
+                    
+                    <a href="<?= ROOT_URL?>category-posts.php?id=<?= $simplecategory['id'] ?>" class="category__button"><?= $simplecategory['title'] ?></a>
 
-                <h3 class="post__title">
-                    <a href="post.html">NUMBERS OF THE VOYAGE – A LITTLE RIDDLE (PART 2)</a>
-                </h3>
+                    <h3 class="post__title">
+                        <a href="<?= ROOT_URL ?>post.php?id=<?= $post['id'] ?>"><?= $post['title'] ?></a>
+                    </h3>
 
-                <p class="post__body">
-                    Deutsche Version siehe unten Mirja Bardenhagen, Marine Resource Exploration – Federal Institute for Geosciences and Natural Resources in Hanover.
-                </p>
+                    <p class="post__body">
+                        <?= substr($post['body'], 0, 150) . "..."; ?>
+                    </p>
 
-                <div class="post__author">
+                    <div class="post__author">
 
-                    <div class="post__author-avatar">
-                        <img src="images/avatar4.jpg">
-                    </div>
+                        <?php
+                        
+                            // FETCHING AUTHOR FROM USER TABLE USING USER ID
+                            $simpleuser_id = $post['author_id'];
+                            $simpleuser_query = "SELECT * FROM users WHERE id=$simpleuser_id";
+                            $simpleuser_result = mysqli_query($connection, $simpleuser_query);
+                            $simpleuser = mysqli_fetch_assoc($simpleuser_result);
+                        
+                        ?>
 
-                    <div class="post__author-info">
-                        <h5>By: Ayesha Ashfaq</h5>
-                        <small>Dec 27, 2022 - 7:58</small>
-                    </div>
+                        <div class="post__author-avatar">
+                            <img src="./images/<?= $simpleuser['avatar']?>">
+                        </div>
 
-                </div>
+                        <div class="post__author-info">
+                            <h5>By: &nbsp;<?= $simpleuser['firstname']. " " . $simpleuser['lastname']?></h5>
+                            <small><?= date("F j, Y, g:i a", strtotime($post['date_time'])); ?></small>
+                        </div>
 
-            </div>
-
-        </article>
-
-        <article class="post">
-
-            <div class="post__thumbnail">
-                <img src="images/blog4.jpg">
-            </div>
-
-            <div class="post__info">
-
-                <a href="category-posts.html" class="category__button">Party</a>
-
-                <h3 class="post__title">
-                    <a href="post.html">DIVE NO. 379</a>
-                </h3>
-
-                <p class="post__body">
-                    Deutsche Version siehe unten Marcel Rothenbeck, AUV Team – GEOMAR Helmholtz Centre for Ocean Research Kiel, Germany We have been at sea for 40 days now.
-                </p>
-
-                <div class="post__author">
-
-                    <div class="post__author-avatar">
-                        <img src="images/avatar4.jpg">
-                    </div>
-
-                    <div class="post__author-info">
-                        <h5>By: Ayesha Ashfaq</h5>
-                        <small>Dec 27, 2022 - 08:02</small>
                     </div>
 
                 </div>
 
-            </div>
+            </article>
 
-        </article>
-
-        <article class="post">
-
-            <div class="post__thumbnail">
-                <img src="images/blog5.jpg">
-            </div>
-
-            <div class="post__info">
-
-                <a href="category-posts.html" class="category__button">Art</a>
-
-                <h3 class="post__title">
-                    <a href="post.html">THE INTERNATIONAL SEABED AUTHORITY</a>
-                </h3>
-
-                <p class="post__body">
-                    Deutsche Version siehe unten Carsten Rühlemann, Federal Institute for Geosciences and Natural Resources in Hannover, Germany I am working in the Marine Resource Exploration department.
-                </p>
-
-                <div class="post__author">
-
-                    <div class="post__author-avatar">
-                        <img src="images/avatar5.jpg">
-                    </div>
-
-                    <div class="post__author-info">
-                        <h5>By: Sadia Ghani</h5>
-                        <small>Dec 27, 2022 - 08:04</small>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="post">
-
-            <div class="post__thumbnail">
-                <img src="images/blog6.jpg">
-            </div>
-
-            <div class="post__info">
-
-                <a href="category-posts.html" class="category__button">Food</a>
-
-                <h3 class="post__title">
-                    <a href="post.html">20TH ANNIVERSARY OF GAME</a>
-                </h3>
-
-                <p class="post__body">
-                    Last Friday, we celebrated the 20th anniversary of the GAME program. It was a day full of joy, words of gratitude, memories and positive intentions for the future.
-                </p>
-
-                <div class="post__author">
-
-                    <div class="post__author-avatar">
-                        <img src="images/avatar6.jpg">
-                    </div>
-
-                    <div class="post__author-info">
-                        <h5>By: Khadija Iqbal</h5>
-                        <small>Dec 27, 2022 - 08:05</small>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="post">
-
-            <div class="post__thumbnail">
-                <img src="images/blog7.jpg">
-            </div>
-
-            <div class="post__info">
-
-                <a href="category-posts.html" class="category__button">Travel</a>
-
-                <h3 class="post__title">
-                    <a href="post.html">SCIENCE IS GREAT AGAIN</a>
-                </h3>
-
-                <p class="post__body">
-                    This year a small group of passionate Doctorate Researchers (DRs) had a big role to fulfill, you may call us the DokTeam. After a long time living with Corona.
-                </p>
-
-                <div class="post__author">
-
-                    <div class="post__author-avatar">
-                        <img src="images/avatar7.jpg">
-                    </div>
-
-                    <div class="post__author-info">
-                        <h5>By: Laiba Azhar</h5>
-                        <small>Dec 27, 2022 - 08:06</small>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        <article class="post">
-
-            <div class="post__thumbnail">
-                <img src="images/blog8.jpg">
-            </div>
-
-            <div class="post__info">
-
-                <a href="category-posts.php" class="category__button">Travel</a>
-
-                <h3 class="post__title">
-                    <a href="post.html">PIONEERING NODULE MINING: SOME WORDS ON GSR AND ON WHAT WE ARE DOING</a>
-                </h3>
-
-                <p class="post__body">
-                    Deutsche Version siehe unten Francois Charlet, Global Sea Mineral Resources, Belgium The transition to clean energy technology.
-                </p>
-
-                <div class="post__author">
-
-                    <div class="post__author-avatar">
-                        <img src="images/avatar8.jpg">
-                    </div>
-
-                    <div class="post__author-info">
-                        <h5>By: Awais Butt</h5>
-                        <small>Dec 27, 2022 - 08:28</small>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </article>
+        <?php endwhile?>
 
     </div>
 </section>
 <!----------------------- Posts SECTION ENDS HERE ------------------------->
 
 
+<?php
+                
+    // FECTHING CATEGORY FROM CATEGORIES TABLE USING CATEGORY ID OF POST
+    $allcategory_query = "SELECT * FROM categories";
+    $allcategory_result = mysqli_query($connection, $allcategory_query);
 
+?>
 
 <section class="category__buttons">
     <div class="container category__buttons-container">
-        <a href="" class="category__button">Wild Life</a>
-        <a href="" class="category__button">Travel</a>
-        <a href="" class="category__button">Food</a>
-        <a href="" class="category__button">Art</a>
-        <a href="" class="category__button">Party</a>
-        <a href="" class="category__button">Robotics</a>
+
+            <?php while($allcategories = mysqli_fetch_assoc($allcategory_result)) : ?>
+            
+                <a href="<?= ROOT_URL ?>category-posts.php?id=<?= $allcategories['id'] ?>" class="category__button">
+                    <?= $allcategories['title'] ?>
+                </a>
+            
+            <?php endwhile?>
+
     </div>
 </section>
 <!----------------------- Category Buttons SECTION ENDS HERE ------------------------->

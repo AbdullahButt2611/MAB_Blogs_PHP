@@ -28,7 +28,10 @@ unset($_SESSION['add-user-data']);
         <?php if(isset($_SESSION['add-user'])) : ?>
 
             <div class="alert__message error">
-                <p><?= $_SESSION['add-user'] ?></p>
+                <p><?= 
+                $_SESSION['add-user'];
+                unset($_SESSION['add-user']);
+                ?></p>
             </div>
 
         <?php endif ?>

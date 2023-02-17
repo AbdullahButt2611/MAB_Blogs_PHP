@@ -42,6 +42,15 @@ $posts =mysqli_query($connection, $query);
             ?></p></b>
         </div>
 
+    <?php elseif(isset($_SESSION['delete-post-success'])) :  // SHOWS IF DELETE POST OPERATION WAS ACTIVATED ?>
+    
+        <div class="alert__message success container">
+            <b><p class="text-center"><?= 
+                $_SESSION['delete-post-success'];
+                unset($_SESSION['delete-post-success']);
+            ?></p></b>
+        </div>
+
     <?php endif ?>
 
 

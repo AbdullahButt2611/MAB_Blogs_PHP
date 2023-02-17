@@ -244,6 +244,10 @@ nav button{
     overflow: hidden;
 }
 
+.post__body{
+    text-align: justify;
+}
+
 
 
 /* ============================     FEATURED POST     ============================= */
