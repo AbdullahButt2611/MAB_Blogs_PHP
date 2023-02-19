@@ -2,106 +2,131 @@
 
 include 'partials/header.php';
 
+
+// FETCHING POST FROM DATABASE IF ID IS SET
+if(isset($_GET['id'])){
+
+    $id= filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+    $query = "SELECT * FROM posts WHERE category_id=$id ORDER BY date_time DESC";
+    $posts = mysqli_query($connection, $query);
+
+
+
+}else{
+    header("location: " . ROOT_URL . "blog.php");
+    die();
+}
+
+
+
 ?>
 
 
 <header class="category__title">
-    <h2>Travel</h2>
+
+    <?php
+                
+        // FECTHING CATEGORY FROM CATEGORIES TABLE USING CATEGORY ID OF POST
+        $simplecategory_query = "SELECT * FROM categories WHERE id=$id";
+        $simplecategory_result = mysqli_query($connection, $simplecategory_query);
+        $simplecategory = mysqli_fetch_assoc($simplecategory_result);
+    
+    ?>
+
+    <h2><?= $simplecategory['title']  ?></h2>
 </header>
 <!----------------------- CATEGORY TITLE HEADER ENDS HERE ------------------------->
 
 
 
 
+<?php if(mysqli_num_rows($posts) > 0) : ?>
+    <section class="posts">
+        <div class="container posts__container">
 
-<section class="posts">
-    <div class="container posts__container">
+            <?php while($post = mysqli_fetch_assoc($posts)) : ?>
 
-        <article class="post">
+                <article class="post">
 
-            <div class="post__thumbnail">
-                <img src="images/blog7.jpg">
-            </div>
-
-            <div class="post__info">
-
-                <a href="category-posts.html" class="category__button">Travel</a>
-
-                <h3 class="post__title">
-                    <a href="post.html">SCIENCE IS GREAT AGAIN</a>
-                </h3>
-
-                <p class="post__body">
-                    This year a small group of passionate Doctorate Researchers (DRs) had a big role to fulfill, you may call us the DokTeam. After a long time living with Corona.
-                </p>
-
-                <div class="post__author">
-
-                    <div class="post__author-avatar">
-                        <img src="images/avatar7.jpg">
+                    <div class="post__thumbnail">
+                        <img src="./images/<?= $post['thumbnail']?>">
                     </div>
 
-                    <div class="post__author-info">
-                        <h5>By: Laiba Azhar</h5>
-                        <small>Dec 27, 2022 - 08:06</small>
+                    <div class="post__info">
+
+                        <h3 class="post__title">
+                            <a href="<?= ROOT_URL ?>post.php?id=<?= $post['id'] ?>"><?= $post['title'] ?></a>
+                        </h3>
+
+                        <p class="post__body">
+                            <?= substr($post['body'], 0, 150) . "..."; ?>
+                        </p>
+
+                        <div class="post__author">
+
+                            <?php
+                            
+                                // FETCHING AUTHOR FROM USER TABLE USING USER ID
+                                $simpleuser_id = $post['author_id'];
+                                $simpleuser_query = "SELECT * FROM users WHERE id=$simpleuser_id";
+                                $simpleuser_result = mysqli_query($connection, $simpleuser_query);
+                                $simpleuser = mysqli_fetch_assoc($simpleuser_result);
+                            
+                            ?>
+
+                            <div class="post__author-avatar">
+                                <img src="./images/<?= $simpleuser['avatar']?>">
+                            </div>
+
+                            <div class="post__author-info">
+                                <h5>By: &nbsp;<?= $simpleuser['firstname']. " " . $simpleuser['lastname']?></h5>
+                                <small><?= date("F j, Y, g:i a", strtotime($post['date_time'])); ?></small>
+                            </div>
+
+                        </div>
+
                     </div>
 
-                </div>
+                </article>
 
-            </div>
+            <?php endwhile?>
 
-        </article>
+        </div>
+    </section>
 
-        <article class="post">
+<?php else : ?>
 
-            <div class="post__thumbnail">
-                <img src="images/blog8.jpg">
-            </div>
-
-            <div class="post__info">
-
-                <a href="category-posts.html" class="category__button">Travel</a>
-
-                <h3 class="post__title">
-                    <a href="post.html">PIONEERING NODULE MINING: SOME WORDS ON GSR AND ON WHAT WE ARE DOING</a>
-                </h3>
-
-                <p class="post__body">
-                    Deutsche Version siehe unten Francois Charlet, Global Sea Mineral Resources, Belgium The transition to clean energy technology.
-                </p>
-
-                <div class="post__author">
-
-                    <div class="post__author-avatar">
-                        <img src="images/avatar8.jpg">
-                    </div>
-
-                    <div class="post__author-info">
-                        <h5>By: Awais Butt</h5>
-                        <small>Dec 27, 2022 - 08:28</small>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </article>
-
+    <div class="alert__message error">
+        <b>
+            <p class="text-center">No Post Found For '<?= $simplecategory['title']?>' Category</p>
+        </b>
     </div>
-</section>
+
+<?php endif?>
 <!----------------------- Posts SECTION ENDS HERE ------------------------->
 
 
 
 
+<?php
+                
+    // FECTHING CATEGORY FROM CATEGORIES TABLE USING CATEGORY ID OF POST
+    $allcategory_query = "SELECT * FROM categories";
+    $allcategory_result = mysqli_query($connection, $allcategory_query);
+
+?>
+
 <section class="category__buttons">
     <div class="container category__buttons-container">
-        <a href="" class="category__button">Wild Life</a>
-        <a href="" class="category__button">Travel</a>
-        <a href="" class="category__button">Food</a>
-        <a href="" class="category__button">Art</a>
-        <a href="" class="category__button">Party</a>
-        <a href="" class="category__button">Robotics</a>
+
+            <?php while($allcategories = mysqli_fetch_assoc($allcategory_result)) : ?>
+            
+                <a href="<?= ROOT_URL ?>category-posts.php?id=<?= $allcategories['id'] ?>" class="category__button">
+                    <?= $allcategories['title'] ?>
+                </a>
+            
+            <?php endwhile?>
+
     </div>
 </section>
 <!----------------------- Category Buttons SECTION ENDS HERE ------------------------->
